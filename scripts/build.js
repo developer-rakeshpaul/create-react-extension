@@ -1,6 +1,8 @@
 const Bundler = require('parcel-bundler')
 const Path = require('path')
+const argv = require('yargs').argv
 
+console.log(argv)
 // Single entrypoint file location:
 // const entryFiles = Path.join(__dirname, './index.html');
 // OR: Multiple files with globbing (can also be .js)
@@ -16,6 +18,7 @@ const entryFiles = [
 
 // Bundler options
 const options = {
+  outDir: argv.outDir || './dist',
   contentHash: false, // Disable content hash from being included on the filename
   minify: process.env.NODE_ENV === 'production', // Minify files, enabled if process.env.NODE_ENV === 'production'
   scopeHoist: false, // Turn on experimental scope hoisting/tree shaking flag, for smaller production bundles

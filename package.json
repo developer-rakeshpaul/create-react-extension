@@ -15,8 +15,15 @@
   "author": "Rakesh Paul<developer.rakeshpaul@gmail.com>",
   "license": "ISC",
   "scripts": {
-    "dev": "rm -rf ./dist/ && node scripts/build.js",
-    "build": "rm -rf ./dist/ && env NODE_ENV=production node scripts/build.js",
+    "build": "cross-env NODE_ENV=production node ./scripts/build.js",
+    "build:dev": "cross-env NODE_ENV=development node ./scripts/build.js",
+    "build:chrome": "npm-run-all clean:chrome 'build -- --out-dir ./dist/chrome'",
+    "build:chrome:dev": "npm-run-all clean:chrome 'build:dev -- --out-dir ./dist/chrome'",
+    "build:firefox": "npm-run-all clean:firefox 'build -- --out-dir ./dist/firefox'",
+    "build:firefox:dev": "npm-run-all clean:firefox 'build:dev -- --out-dir ./dist/firefox'",
+    "clean": "npm-run-all --parallel clean:chorome clean:firefox",
+    "clean:chrome": "rimraf dist/chrome",
+    "clean:firefox": "rimraf dist/firefox",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.jsx,.ts,.tsx ./",
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|jsx|tsx|ts)\"",
@@ -43,6 +50,7 @@
     "@types/react-dom": "^16.9.7",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
+    "cross-env": "^7.0.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.20.2",
@@ -60,9 +68,27 @@
     "parcel-plugin-static-files-copy": "^2.3.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3",
     "web-ext": "^4.2.0",
     "web-ext-types": "^3.2.1",
-    "webextension-polyfill": "^0.6.0"
+    "webextension-polyfill": "^0.6.0",
+    "yargs": "^15.3.1"
+  },
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "icons",
+        "staticOutDir": "icons"
+      },
+      {
+        "outDirPattern": "**/chrome",
+        "staticPath": "chrome"
+      },
+      {
+        "outDirPattern": "**/firefox",
+        "staticPath": "firefox"
+      }
+    ]
   }
 }
