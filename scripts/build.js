@@ -2,7 +2,6 @@ const Bundler = require('parcel-bundler')
 const Path = require('path')
 const argv = require('yargs').argv
 
-console.log(argv)
 // Single entrypoint file location:
 // const entryFiles = Path.join(__dirname, './index.html');
 // OR: Multiple files with globbing (can also be .js)
