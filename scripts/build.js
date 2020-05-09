@@ -1,5 +1,4 @@
 const Bundler = require('parcel-bundler')
-const Path = require('path')
 const argv = require('yargs').argv
 
 // Single entrypoint file location:
@@ -10,6 +9,7 @@ const argv = require('yargs').argv
 const entryFiles = [
   'src/content_script.ts',
   'src/background.ts',
+  'src/hot_reload.ts',
   'src/pageAction/index.tsx',
   'src/options.html',
   'src/main.html',
@@ -31,6 +31,7 @@ const options = {
 ;(async function () {
   try {
     // Initializes a bundler using the entrypoint location and options provided
+    // @ts-ignore
     const bundler = new Bundler(entryFiles, options)
 
     bundler.on('buildStart', entryPoints => {

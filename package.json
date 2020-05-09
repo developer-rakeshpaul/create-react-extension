@@ -89,6 +89,7 @@
         "outDirPattern": "**/firefox",
         "staticPath": "firefox"
       }
-    ]
+    ],
+    "watcherGlob": "**"
   }
 }

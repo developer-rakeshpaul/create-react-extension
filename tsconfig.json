@@ -18,6 +18,7 @@
     "sourceMap": true,
     "noImplicitReturns": false,
     "noImplicitAny": false,
+    "types": [],
     "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"]
   },
   "include": ["src"]

@@ -1,4 +1,5 @@
-/// <reference types="chrome" />
+/// <reference types="web-ext-types" />
+
 import browser from 'webextension-polyfill'
 
 import { openTab } from './utils/actions'
