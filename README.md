@@ -11,8 +11,6 @@ react. Develop your next extension using
 
 ### Installation
 
-Dillinger requires [Node.js](https://nodejs.org/) to run.
-
 Install the dependencies and devDependencies
 
 ```sh
